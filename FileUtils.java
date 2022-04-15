@@ -7,25 +7,22 @@ import java.util.Scanner;
 public class FileUtils {
     public static String readFile(String fileName) {
         String text = "";
-
+        
         try {
-            Scanner nadzieja = new Scanner(new File(fileName));
-            while (nadzieja.hasNextLine()) text += nadzieja.nextLine() + "\n";
+            Scanner nadzieja = new Scanner(new File(fileName));             
+            while (nadzieja.hasNextLine())
+                text += nadzieja.nextLine() + "\n";
             nadzieja.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
+        } catch (FileNotFoundException ignored) {}
+        
         return text;
     }
-
+    
     public static void writeFile(String fileName, String text) {
         try {
             FileWriter fw = new FileWriter(fileName);
             fw.write(text);
             fw.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        } catch (IOException ignored) {}
     }
 }
